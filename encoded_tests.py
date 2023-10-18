@@ -8,7 +8,7 @@ def test_encoded_numeric():
 
 
 def test_encoded_alphanumeric():
-    assert analyze("123b334") == EncodedType.ALPHANUMERIC
+    assert analyze("123B334") == EncodedType.ALPHANUMERIC
 
 
 def test_encoded_iso558951():

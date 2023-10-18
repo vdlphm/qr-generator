@@ -1,4 +1,8 @@
+import string
+
 from encoded_type import EncodedType
+
+ALPHANUMERIC_CHARS = set(string.digits + string.ascii_uppercase + " $%*+-/.:")
 
 
 def __isISO88591(s):
@@ -10,11 +14,10 @@ def __isISO88591(s):
 
 
 def __isAlphanum(s):
-    try:
-        s.encode("ascii")
-        return True
-    except UnicodeEncodeError:
-        return False
+    for c in s:
+        if c not in ALPHANUMERIC_CHARS:
+            return False
+    return True
 
 
 def __isKanji(s):
@@ -23,6 +26,7 @@ def __isKanji(s):
         return True
     except UnicodeEncodeError:
         return False
+
 
 def analyze(s):
     if s.isnumeric():
